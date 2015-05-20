@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1649A68E1B0C7A48002825C5 /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A68D1B0C7A48002825C5 /* DBMessage.m */; };
+		1649A6911B0C7A9D002825C5 /* DBSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A6901B0C7A9D002825C5 /* DBSender.m */; };
+		1649A6941B0C821E002825C5 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A6931B0C821E002825C5 /* DBManager.m */; };
 		167C30141AD7E2C80053CB63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30131AD7E2C80053CB63 /* main.m */; };
 		167C30171AD7E2C80053CB63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30161AD7E2C80053CB63 /* AppDelegate.m */; };
 		167C301A1AD7E2C80053CB63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30191AD7E2C80053CB63 /* ViewController.m */; };
@@ -28,6 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1649A68C1B0C7A48002825C5 /* DBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBMessage.h; path = Models/DBMessage.h; sourceTree = "<group>"; };
+		1649A68D1B0C7A48002825C5 /* DBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBMessage.m; path = Models/DBMessage.m; sourceTree = "<group>"; };
+		1649A68F1B0C7A9D002825C5 /* DBSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSender.h; path = Models/DBSender.h; sourceTree = "<group>"; };
+		1649A6901B0C7A9D002825C5 /* DBSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSender.m; path = Models/DBSender.m; sourceTree = "<group>"; };
+		1649A6921B0C821E002825C5 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBManager.h; path = Models/DBManager.h; sourceTree = "<group>"; };
+		1649A6931B0C821E002825C5 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBManager.m; path = Models/DBManager.m; sourceTree = "<group>"; };
 		167C300E1AD7E2C80053CB63 /* Realm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Realm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		167C30121AD7E2C80053CB63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		167C30131AD7E2C80053CB63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,6 +74,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1649A68B1B0C7A13002825C5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1649A68C1B0C7A48002825C5 /* DBMessage.h */,
+				1649A68D1B0C7A48002825C5 /* DBMessage.m */,
+				1649A68F1B0C7A9D002825C5 /* DBSender.h */,
+				1649A6901B0C7A9D002825C5 /* DBSender.m */,
+				1649A6921B0C821E002825C5 /* DBManager.h */,
+				1649A6931B0C821E002825C5 /* DBManager.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		167C30051AD7E2C80053CB63 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +110,7 @@
 		167C30101AD7E2C80053CB63 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				1649A68B1B0C7A13002825C5 /* Models */,
 				167C30151AD7E2C80053CB63 /* AppDelegate.h */,
 				167C30161AD7E2C80053CB63 /* AppDelegate.m */,
 				167C30181AD7E2C80053CB63 /* ViewController.h */,
@@ -279,6 +302,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				167C301A1AD7E2C80053CB63 /* ViewController.m in Sources */,
+				1649A6911B0C7A9D002825C5 /* DBSender.m in Sources */,
+				1649A68E1B0C7A48002825C5 /* DBMessage.m in Sources */,
+				1649A6941B0C821E002825C5 /* DBManager.m in Sources */,
 				167C30171AD7E2C80053CB63 /* AppDelegate.m in Sources */,
 				167C30141AD7E2C80053CB63 /* main.m in Sources */,
 			);

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1649A67D1B0BD0D0002825C5 /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A67C1B0BD0D0002825C5 /* DBMessage.m */; };
 		1649A6801B0BD0D0002825C5 /* DBSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A67F1B0BD0D0002825C5 /* DBSender.m */; };
+		1649A6891B0C71FB002825C5 /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A6881B0C71FB002825C5 /* DBMessage.m */; };
 		167C30781AD7EEF60053CB63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30771AD7EEF60053CB63 /* main.m */; };
 		167C307B1AD7EEF60053CB63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C307A1AD7EEF60053CB63 /* AppDelegate.m */; };
 		167C307E1AD7EEF60053CB63 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 167C307C1AD7EEF60053CB63 /* CoreData.xcdatamodeld */; };
@@ -31,10 +31,10 @@
 
 /* Begin PBXFileReference section */
 		1649A6681B0BCC9A002825C5 /* CoreData 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreData 3.xcdatamodel"; sourceTree = "<group>"; };
-		1649A67B1B0BD0D0002825C5 /* DBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBMessage.h; path = Models/DBMessage.h; sourceTree = "<group>"; };
-		1649A67C1B0BD0D0002825C5 /* DBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBMessage.m; path = Models/DBMessage.m; sourceTree = "<group>"; };
 		1649A67E1B0BD0D0002825C5 /* DBSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSender.h; path = Models/DBSender.h; sourceTree = "<group>"; };
 		1649A67F1B0BD0D0002825C5 /* DBSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSender.m; path = Models/DBSender.m; sourceTree = "<group>"; };
+		1649A6871B0C71FB002825C5 /* DBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBMessage.h; path = Models/DBMessage.h; sourceTree = "<group>"; };
+		1649A6881B0C71FB002825C5 /* DBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBMessage.m; path = Models/DBMessage.m; sourceTree = "<group>"; };
 		1679D0111AF93451001A6489 /* CoreData 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreData 2.xcdatamodel"; sourceTree = "<group>"; };
 		167C30721AD7EEF60053CB63 /* CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		167C30761AD7EEF60053CB63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,10 +73,10 @@
 		1679D0101AF92F6D001A6489 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1649A6871B0C71FB002825C5 /* DBMessage.h */,
+				1649A6881B0C71FB002825C5 /* DBMessage.m */,
 				1649A67E1B0BD0D0002825C5 /* DBSender.h */,
 				1649A67F1B0BD0D0002825C5 /* DBSender.m */,
-				1649A67B1B0BD0D0002825C5 /* DBMessage.h */,
-				1649A67C1B0BD0D0002825C5 /* DBMessage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 				167C30811AD7EEF60053CB63 /* ViewController.m in Sources */,
 				167C307E1AD7EEF60053CB63 /* CoreData.xcdatamodeld in Sources */,
 				1649A6801B0BD0D0002825C5 /* DBSender.m in Sources */,
-				1649A67D1B0BD0D0002825C5 /* DBMessage.m in Sources */,
+				1649A6891B0C71FB002825C5 /* DBMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

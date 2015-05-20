@@ -10,10 +10,15 @@
 
 @interface DBMessage : NSObject
 
-@property (nonatomic) int messageID;
+@property (nonatomic) NSInteger messageID;
 @property (nonatomic, strong) NSString * msgData;
 @property (nonatomic, strong) NSDate * sendTime;
-@property (nonatomic) int viewed;
-@property (nonatomic) int senderID;
+@property (nonatomic) NSInteger senderID;
+@property (nonatomic) BOOL viewed;
+
+-(id) initWithoutID;
+
++(DBMessage *) getRandomMessage;
++(DBMessage *) getRandomMessage:(NSInteger)senderID;
 
 @end

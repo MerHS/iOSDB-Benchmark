@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1649A65E1B0BCA7D002825C5 /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A65D1B0BCA7D002825C5 /* DBMessage.m */; };
 		1649A6611B0BCA9C002825C5 /* DBSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A6601B0BCA9C002825C5 /* DBSender.m */; };
+		1649A6831B0BE50B002825C5 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A6821B0BE50B002825C5 /* DBManager.m */; };
+		1649A6961B0CE78C002825C5 /* chess.png in Resources */ = {isa = PBXBuildFile; fileRef = 1649A6951B0CE78C002825C5 /* chess.png */; };
 		167C30461AD7E2F40053CB63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30451AD7E2F40053CB63 /* main.m */; };
 		167C30491AD7E2F40053CB63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30481AD7E2F40053CB63 /* AppDelegate.m */; };
 		167C304C1AD7E2F40053CB63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C304B1AD7E2F40053CB63 /* ViewController.m */; };
@@ -35,6 +37,10 @@
 		1649A65D1B0BCA7D002825C5 /* DBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBMessage.m; path = Models/DBMessage.m; sourceTree = "<group>"; };
 		1649A65F1B0BCA9C002825C5 /* DBSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSender.h; path = Models/DBSender.h; sourceTree = "<group>"; };
 		1649A6601B0BCA9C002825C5 /* DBSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSender.m; path = Models/DBSender.m; sourceTree = "<group>"; };
+		1649A6811B0BE50B002825C5 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBManager.h; path = Models/DBManager.h; sourceTree = "<group>"; };
+		1649A6821B0BE50B002825C5 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBManager.m; path = Models/DBManager.m; sourceTree = "<group>"; };
+		1649A68A1B0C79AB002825C5 /* messenger.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = messenger.db; sourceTree = "<group>"; };
+		1649A6951B0CE78C002825C5 /* chess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chess.png; path = ../../../../../Desktop/chess.png; sourceTree = "<group>"; };
 		167C30401AD7E2F40053CB63 /* FMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		167C30441AD7E2F40053CB63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		167C30451AD7E2F40053CB63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -81,6 +87,8 @@
 				1649A65D1B0BCA7D002825C5 /* DBMessage.m */,
 				1649A65F1B0BCA9C002825C5 /* DBSender.h */,
 				1649A6601B0BCA9C002825C5 /* DBSender.m */,
+				1649A6811B0BE50B002825C5 /* DBManager.h */,
+				1649A6821B0BE50B002825C5 /* DBManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -124,6 +132,8 @@
 		167C30431AD7E2F40053CB63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1649A6951B0CE78C002825C5 /* chess.png */,
+				1649A68A1B0C79AB002825C5 /* messenger.db */,
 				167C30441AD7E2F40053CB63 /* Info.plist */,
 				167C30451AD7E2F40053CB63 /* main.m */,
 			);
@@ -249,6 +259,7 @@
 			files = (
 				167C304F1AD7E2F40053CB63 /* Main.storyboard in Resources */,
 				167C30541AD7E2F40053CB63 /* LaunchScreen.xib in Resources */,
+				1649A6961B0CE78C002825C5 /* chess.png in Resources */,
 				167C30511AD7E2F40053CB63 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +314,7 @@
 				167C304C1AD7E2F40053CB63 /* ViewController.m in Sources */,
 				1649A6611B0BCA9C002825C5 /* DBSender.m in Sources */,
 				1649A65E1B0BCA7D002825C5 /* DBMessage.m in Sources */,
+				1649A6831B0BE50B002825C5 /* DBManager.m in Sources */,
 				167C30491AD7E2F40053CB63 /* AppDelegate.m in Sources */,
 				167C30461AD7E2F40053CB63 /* main.m in Sources */,
 			);

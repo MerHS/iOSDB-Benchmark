@@ -10,4 +10,11 @@
 
 @interface DBSender : NSObject
 
+@property (nonatomic) NSInteger senderID;
+@property (nonatomic, strong) NSData * senderImage;
+@property (nonatomic, strong) NSString * senderName;
+
+-(id) initWithoutID;
++(DBSender *) getRandomSender;
+
 @end
