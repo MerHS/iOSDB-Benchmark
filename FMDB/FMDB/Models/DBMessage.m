@@ -35,7 +35,7 @@
     DBMessage *msg = [[DBMessage alloc] init];
     msg.msgData = [[NSUUID UUID] UUIDString];
     msg.sendTime = [NSDate dateWithTimeIntervalSinceReferenceDate:arc4random_uniform(10000)];
-    msg.viewed = NO;
+    msg.viewed = arc4random_uniform(2) ? YES : NO;
     msg.senderID = 0;
     return msg;
 }
@@ -45,7 +45,7 @@
     DBMessage *msg = [[DBMessage alloc] init];
     msg.msgData = [[NSUUID UUID] UUIDString];
     msg.sendTime = [NSDate dateWithTimeIntervalSinceReferenceDate:arc4random_uniform(10000)];
-    msg.viewed = NO;
+    msg.viewed = arc4random_uniform(2) ? YES : NO;
     msg.senderID = senderID;
     return msg;
 }
