@@ -14,11 +14,12 @@
 @property NSInteger senderID;
 @property NSData*   senderImage;
 @property NSString* senderName;
-@property RLMArray<DBMessage> *messages;
+//@property RLMArray<DBMessage> *messages;
+// readonly property doesn't be saved in the realm file
+@property (readonly) NSArray* messages;
 
 -(id) initWithoutID;
 
-+(DBSender *) getDefaultSender;
 +(DBSender *) getRandomSender;
 
 @end

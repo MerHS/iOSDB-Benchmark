@@ -26,17 +26,14 @@ DBSender *defaultSender;
     return self;
 }
 
+-(NSArray *) messages{
+    return [self linkingObjectsOfClass:@"DBMessage" forProperty:@"senderID"];
+}
+
 +(NSString *) primaryKey{
     return @"senderID";
 }
 
-+(DBSender *) getDefaultSender
-{
-    if (defaultSender == nil){
-        defaultSender = [[DBSender alloc] init];
-    }
-    return defaultSender;
-}
 
 +(DBSender *) getRandomSender
 {

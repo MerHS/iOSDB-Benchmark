@@ -11,6 +11,7 @@
 @implementation DBManager
 
 RLMRealm *realm;
+DBSender *defaultSender;
 
 -(id) init
 {
@@ -23,154 +24,111 @@ RLMRealm *realm;
 -(void) initializeDB
 {
     realm = [RLMRealm defaultRealm];
+    if (defaultSender == nil){
+        if ((defaultSender = [[DBSender allObjects] firstObject]) == nil){
+            defaultSender = [[DBSender alloc] init];
+            [realm beginWriteTransaction];
+            [realm addObject:defaultSender];
+            [realm commitWriteTransaction];
+        }
+    }
 }
 
 
 -(void) insertMessage:(DBMessage *)dbMessage
 {
-    /*
-    [db executeUpdate:@"INSERT INTO DBMessage VALUES (?, ?, ?, ?, ?)"
-     ,[NSNumber numberWithInteger:dbMessage.messageID]
-     ,dbMessage.msgData
-     ,dbMessage.sendTime
-     ,[NSNumber numberWithInteger:dbMessage.senderID]
-     ,[NSNumber numberWithBool:dbMessage.viewed]];
-     */
+    [realm beginWriteTransaction];
+    [realm addObject:dbMessage];
+    [realm commitWriteTransaction];
 }
 
 -(void) insertMessageWithTransaction:(int)repeatCount senderIdMax:(int)senderIdMax
 {
-    BOOL success = YES;
-    DBMessage *message;
     [realm beginWriteTransaction];
-    
     for (int i = 0; i < repeatCount; i++) {
-        message = [DBMessage getRandomMessage:(NSInteger)arc4random_uniform(senderIdMax)];
-        [db executeUpdate:@"INSERT INTO DBMessage VALUES (?, ?, ?, ?, ?)"
-         ,[NSNumber numberWithInteger:message.messageID]
-         ,message.msgData
-         ,message.sendTime
-         ,[NSNumber numberWithInteger:message.senderID]
-         ,[NSNumber numberWithBool:message.viewed]];
+        [realm addObject:[DBMessage getRandomMessage:defaultSender]];
     }
-    
-    if (success) {
-        [realm commitWriteTransaction];
-    } else {
-        [realm cancelWriteTransaction];
-    }
+    [realm commitWriteTransaction];
 }
 
 -(void) insertSender:(DBSender *)dbSender
 {
-    [db executeUpdate:@"INSERT INTO DBSender VALUES (?, ?, ?)"
-     ,[NSNumber numberWithInteger:dbSender.senderID]
-     ,dbSender.senderImage
-     ,dbSender.senderName];
-    
+    [realm beginWriteTransaction];
+    [realm addObject:dbSender];
+    [realm commitWriteTransaction];
 }
 
 -(void) insertSenderWithTransaction:(int)repeatCount
 {
-    BOOL success = YES;
-    DBSender *sender;
-    [db beginTransaction];
-    
+    [realm beginWriteTransaction];
     for (int i = 0; i < repeatCount; i++) {
-        sender = [DBSender getRandomSender];
-        [db executeUpdate:@"INSERT INTO DBSender VALUES (?, ?, ?)"
-         ,[NSNumber numberWithInteger:sender.senderID]
-         ,sender.senderImage
-         ,sender.senderName];
+        [realm addObject:[DBSender getRandomSender]];
     }
-    
-    if (success) {
-        [db commit];
-    } else {
-        [db rollback];
-    }
+    [realm commitWriteTransaction];
 }
 
 -(DBMessage *) selectMessage:(NSInteger)withID
 {
-    FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM DBMessage WHERE messageID = ?", [NSNumber numberWithInteger:withID]];
-    DBMessage *message = [[DBMessage alloc] initWithoutID];
-    if([resultSet next]){
-        message.messageID = [resultSet intForColumnIndex:0];
-        message.msgData = [resultSet stringForColumnIndex:1];
-        message.sendTime = [resultSet dateForColumnIndex:2];
-        message.senderID = [resultSet intForColumnIndex:3];
-        message.viewed = [resultSet boolForColumnIndex:4];
-    }
-    return message;
+    return [DBMessage objectForPrimaryKey:[NSNumber numberWithInteger:withID]];
 }
 
 -(DBSender *) selectSender:(NSString *)withName
 {
-    FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM DBSender WHERE senderID = ?", withName];
-    DBSender *sender = [[DBSender alloc] initWithoutID];
-    if([resultSet next]){
-        sender.senderID = [resultSet intForColumnIndex:0];
-        sender.senderName = [resultSet stringForColumnIndex:1];
-        sender.senderImage = [resultSet dataForColumnIndex:2];
-    }
-    return sender;
+    return [[DBSender objectsWithPredicate:
+             [NSPredicate predicateWithFormat:@"senderName == %@", withName]] firstObject];
 }
 
 -(void) updateMessageViewed:(NSInteger)senderID
 {
-    [db executeUpdate:@"UPDATE DBMessage SET viewed = TRUE WHERE senderID = ?", [NSNumber numberWithInteger:senderID]];
+    RLMResults *results = [DBMessage objectsWithPredicate:
+                           [NSPredicate predicateWithFormat:@"viewed == NO AND senderID.senderID == %@", senderID]];
+    [realm beginWriteTransaction];
+    [results setValue:[NSNumber numberWithBool:YES] forKey:@"viewed"];
+    [realm commitWriteTransaction];
 }
 
 -(NSMutableArray *) fetchBetweenDate:(NSDate *)startDate endDate:(NSDate *)endDate fetchMax:(NSInteger)fetchMax
 {
     NSMutableArray *fetchData = [[NSMutableArray alloc] init];
-    FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM DBMessage WHERE sendTime >= ? AND sendTime <= ?", startDate, endDate];
+    RLMResults *results = [DBMessage objectsWithPredicate:
+                           [NSPredicate predicateWithFormat:@"sendTime >= %@ AND sendTIME <= %@", startDate, endDate]];
     NSInteger i = 0;
-    while ([resultSet next] && i < fetchMax) {
-        DBMessage *message = [[DBMessage alloc] initWithoutID];
-        message.messageID = [resultSet intForColumnIndex:0];
-        message.msgData = [resultSet stringForColumnIndex:1];
-        message.sendTime = [resultSet dateForColumnIndex:2];
-        message.senderID = [resultSet intForColumnIndex:3];
-        message.viewed = [resultSet boolForColumnIndex:4];
-        i++;
+    for (id objects in results){
+        if (i++ >= fetchMax) break;
+        [fetchData addObject:objects];
     }
     return fetchData;
 }
 
 -(int) unseenMessageCountWithID:(NSInteger)senderID
 {
-    FMResultSet *resultSet = [db executeQuery:@"SELECT count(*) FROM DBMessage WHERE senderID = ? AND viewed = FALSE", [NSNumber numberWithInteger:senderID]];
+    RLMResults *result = [DBMessage objectsWithPredicate:
+                          [NSPredicate predicateWithFormat:@"viewed = NO AND senderID.senderID = %@", senderID]];
     
-    if([resultSet next]){
-        return [resultSet intForColumnIndex:0];
-    }
-    
-    return 0;
+    return (int)[result count];
 }
 
 -(NSMutableArray *) fetchMessageWithName:(NSString *)senderName fetchCount:(NSInteger)fetchMax
 {
     NSMutableArray *fetchData = [[NSMutableArray alloc] initWithCapacity:fetchMax];
-    FMResultSet *resultSet = [db executeQuery:@"SELECT messageID, msgData, sendTime, senderID, viewed \
-                              FROM DBMessage NATURAL JOIN DBSender WHERE senderName = ?", senderName];
+    RLMResults *results = [DBMessage objectsWithPredicate:
+                           [NSPredicate predicateWithFormat:@"senderID.senderName == %@", senderName]];
+    
     NSInteger i = 0;
-    while ([resultSet next] && i < fetchMax) {
-        DBMessage *message = [[DBMessage alloc] initWithoutID];
-        message.messageID = [resultSet intForColumnIndex:0];
-        message.msgData = [resultSet stringForColumnIndex:1];
-        message.sendTime = [resultSet dateForColumnIndex:2];
-        message.senderID = [resultSet intForColumnIndex:3];
-        message.viewed = [resultSet boolForColumnIndex:4];
-        i++;
+    for (id objects in results){
+        if (i++ >= fetchMax) break;
+        [fetchData addObject:objects];
     }
     return fetchData;
 }
 
--(void) deleteOldMessage:(NSInteger)expiredDate
+-(void) deleteOldMessage:(NSDate *)expiredDate
 {
-    [db executeUpdate:@"DELETE FROM DBMessage WHERE sendTime < ?", [NSNumber numberWithInteger:expiredDate]];
+    RLMResults *results = [DBMessage objectsWithPredicate:
+                           [NSPredicate predicateWithFormat:@"sendTime < %@", expiredDate]];
+    [realm beginWriteTransaction];
+    [realm deleteObjects:results];
+    [realm commitWriteTransaction];
 }
 
 

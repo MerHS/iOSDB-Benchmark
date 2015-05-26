@@ -177,8 +177,8 @@ FMDatabase* db;
     return fetchData;
 }
 
--(void) deleteOldMessage:(NSInteger)expiredDate
+-(void) deleteOldMessage:(NSDate *)expiredDate
 {
-    [db executeUpdate:@"DELETE FROM DBMessage WHERE sendTime < ?", [NSNumber numberWithInteger:expiredDate]];
+    [db executeUpdate:@"DELETE FROM DBMessage WHERE sendTime < ?", expiredDate];
 }
 @end

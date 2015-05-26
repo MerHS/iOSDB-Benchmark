@@ -34,7 +34,7 @@
     msg.msgData = [[NSUUID UUID] UUIDString];
     msg.sendTime = [NSDate dateWithTimeIntervalSinceReferenceDate:arc4random_uniform(10000)];
     msg.viewed = arc4random_uniform(2) ? YES : NO;
-    msg.senderID = 0;
+    msg.senderID = nil;
     return msg;
 }
 
@@ -45,7 +45,6 @@
     msg.sendTime = [NSDate dateWithTimeIntervalSinceReferenceDate:arc4random_uniform(10000)];
     msg.viewed = arc4random_uniform(2) ? YES : NO;
     msg.senderID = senderID;
-    [senderID.messages addObject:msg];
     return msg;
 }
 

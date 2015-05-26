@@ -26,6 +26,6 @@
 -(NSMutableArray *) fetchBetweenDate:(NSDate *)startDate endDate:(NSDate *)endDate fetchMax:(NSInteger)fetchMax; // 7
 -(int) unseenMessageCountWithID:(NSInteger)senderID; // 8
 -(NSMutableArray *) fetchMessageWithName:(NSString *)senderName fetchCount:(NSInteger)fetchMax; // 9
--(void) deleteOldMessage:(NSInteger)expiredDate; // 10
+-(void) deleteOldMessage:(NSDate *)expiredDate; // 10
 
 @end

@@ -14,9 +14,17 @@
 
 @implementation ViewController
 
+DBManager* manager;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    manager = [[DBManager alloc] init];
+    
+    NSLog(@"%@", [RLMRealm defaultRealmPath]);
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
