@@ -18,7 +18,7 @@
 
 -(id) init
 {
-    static int maxID = 0;
+    static NSInteger maxID = 0;
     self = [super init];
     self.messageID = (maxID++);
     return self;

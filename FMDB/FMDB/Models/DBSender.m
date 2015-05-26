@@ -16,7 +16,7 @@
 
 -(id) init
 {
-    static int idMax = 0;
+    static NSInteger idMax = 0;
     self = [super init];
     self.senderID = idMax++;
     return self;

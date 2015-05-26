@@ -16,6 +16,9 @@
 @property NSString* senderName;
 @property RLMArray<DBMessage> *messages;
 
+-(id) initWithoutID;
+
++(DBSender *) getDefaultSender;
 +(DBSender *) getRandomSender;
 
 @end

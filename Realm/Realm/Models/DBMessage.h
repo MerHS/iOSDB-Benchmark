@@ -17,6 +17,8 @@
 @property DBSender* senderID;
 @property BOOL viewed;
 
+-(id) initWithoutID;
+
 +(DBMessage *) getRandomMessage;
 +(DBMessage *) getRandomMessage:(DBSender *)senderID;
 

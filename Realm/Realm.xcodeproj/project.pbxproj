@@ -10,6 +10,7 @@
 		1649A68E1B0C7A48002825C5 /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A68D1B0C7A48002825C5 /* DBMessage.m */; };
 		1649A6911B0C7A9D002825C5 /* DBSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A6901B0C7A9D002825C5 /* DBSender.m */; };
 		1649A6941B0C821E002825C5 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649A6931B0C821E002825C5 /* DBManager.m */; };
+		1649A6981B0D6C2A002825C5 /* chess.png in Resources */ = {isa = PBXBuildFile; fileRef = 1649A6971B0D6C2A002825C5 /* chess.png */; };
 		167C30141AD7E2C80053CB63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30131AD7E2C80053CB63 /* main.m */; };
 		167C30171AD7E2C80053CB63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30161AD7E2C80053CB63 /* AppDelegate.m */; };
 		167C301A1AD7E2C80053CB63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C30191AD7E2C80053CB63 /* ViewController.m */; };
@@ -37,6 +38,7 @@
 		1649A6901B0C7A9D002825C5 /* DBSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSender.m; path = Models/DBSender.m; sourceTree = "<group>"; };
 		1649A6921B0C821E002825C5 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBManager.h; path = Models/DBManager.h; sourceTree = "<group>"; };
 		1649A6931B0C821E002825C5 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBManager.m; path = Models/DBManager.m; sourceTree = "<group>"; };
+		1649A6971B0D6C2A002825C5 /* chess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chess.png; sourceTree = "<group>"; };
 		167C300E1AD7E2C80053CB63 /* Realm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Realm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		167C30121AD7E2C80053CB63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		167C30131AD7E2C80053CB63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		167C30111AD7E2C80053CB63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1649A6971B0D6C2A002825C5 /* chess.png */,
 				167C30121AD7E2C80053CB63 /* Info.plist */,
 				167C30131AD7E2C80053CB63 /* main.m */,
 			);
@@ -250,6 +253,7 @@
 			files = (
 				167C301D1AD7E2C80053CB63 /* Main.storyboard in Resources */,
 				167C30221AD7E2C80053CB63 /* LaunchScreen.xib in Resources */,
+				1649A6981B0D6C2A002825C5 /* chess.png in Resources */,
 				167C301F1AD7E2C80053CB63 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
